@@ -47,22 +47,22 @@ export default function Footer({ onNavigate }) {
             <ul className="footer-links-list">
               <li>
                 <a href="#subjects" onClick={(e) => handleNavClick(e, 'subjects')}>
-                  Physics Modules
+                  Physics: Motion in a Plane
                 </a>
               </li>
               <li>
                 <a href="#subjects" onClick={(e) => handleNavClick(e, 'subjects')}>
-                  Chemistry Labs
+                  Chemistry: Some Basic Concepts
                 </a>
               </li>
               <li>
                 <a href="#subjects" onClick={(e) => handleNavClick(e, 'subjects')}>
-                  Biology Workbench
+                  Biology: Plant Kingdom
                 </a>
               </li>
               <li>
                 <a href="#simulations" onClick={(e) => handleNavClick(e, 'simulations')}>
-                  Interactive Solvers
+                  Class 11 NCERT Modules
                 </a>
               </li>
             </ul>
@@ -73,17 +73,17 @@ export default function Footer({ onNavigate }) {
             <ul className="footer-links-list">
               <li>
                 <a href="#simulations" onClick={(e) => handleNavClick(e, 'simulations')}>
-                  Harmonic Oscillations
+                  Projectile Motion (Ch. 4)
                 </a>
               </li>
               <li>
                 <a href="#simulations" onClick={(e) => handleNavClick(e, 'simulations')}>
-                  Acid-Base Titration
+                  Mole Concept & NA (Ch. 1)
                 </a>
               </li>
               <li>
                 <a href="#simulations" onClick={(e) => handleNavClick(e, 'simulations')}>
-                  Michaelis-Menten Kinetics
+                  Plant Kingdom (Ch. 3)
                 </a>
               </li>
               <li>

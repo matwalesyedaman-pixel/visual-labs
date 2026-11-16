@@ -40,13 +40,13 @@ export default function PendulumSimulation() {
 
         <h3 className="sim-title">Simple Harmonic Motion & Gravitational Dynamics</h3>
         <p className="sim-summary">
-          Investigate how string length ($L$), initial angular deflection ($\theta$), and local gravitational field ($g$) govern the period of an ideal pendulum. Compare finite-amplitude period corrections against the standard small-angle approximation.
+          Investigate how string length (L), initial angular deflection (θ), and local gravitational field (g) govern the period of an ideal pendulum. Compare finite-amplitude period corrections against the standard small-angle approximation.
         </p>
 
         <div className="sim-controls-panel">
           <div className="control-group">
             <div className="control-header">
-              <label htmlFor="pendulum-len">Pendulum Length ($L$)</label>
+              <label htmlFor="pendulum-len">Pendulum Length (L)</label>
               <span className="control-readout">{pendulumLength.toFixed(1)} m</span>
             </div>
             <input
@@ -68,7 +68,7 @@ export default function PendulumSimulation() {
 
           <div className="control-group">
             <div className="control-header">
-              <label htmlFor="pendulum-angle">Initial Deflection Angle ($\theta$)</label>
+              <label htmlFor="pendulum-angle">Initial Deflection Angle (θ)</label>
               <span className="control-readout">{pendulumAngle}°</span>
             </div>
             <input
@@ -89,7 +89,7 @@ export default function PendulumSimulation() {
           </div>
 
           <div className="control-group">
-            <label className="control-sublabel">Gravitational Environment ($g$)</label>
+            <label className="control-sublabel">Gravitational Environment (g)</label>
             <div className="gravity-preset-buttons">
               <button
                 type="button"
@@ -118,15 +118,15 @@ export default function PendulumSimulation() {
 
         <div className="sim-readouts-grid">
           <div className="readout-box">
-            <span className="readout-title">Oscillation Period ($T$)</span>
+            <span className="readout-title">Oscillation Period (T)</span>
             <span className="readout-stat">{tCorrected.toFixed(2)} s</span>
           </div>
           <div className="readout-box">
-            <span className="readout-title">Natural Frequency ($f$)</span>
+            <span className="readout-title">Natural Frequency (f)</span>
             <span className="readout-stat">{frequency.toFixed(2)} Hz</span>
           </div>
           <div className="readout-box">
-            <span className="readout-title">Restoring Accel ($a_t$)</span>
+            <span className="readout-title">Restoring Accel (a_t)</span>
             <span className="readout-stat">{restoringAccel.toFixed(2)} m/s²</span>
           </div>
         </div>
@@ -216,7 +216,7 @@ export default function PendulumSimulation() {
 
         <div className="viewport-footer">
           <span className="equation-annotation">
-            Model: <code>T = 2π√(L/g) [1 + (1/16)θ²]</code> • Small-angle $T_0$ = {t0.toFixed(2)} s
+            Model: <code>T = 2π√(L/g) [1 + (1/16)θ²]</code> • Small-angle T₀ = {t0.toFixed(2)} s
           </span>
         </div>
       </div>

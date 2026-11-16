@@ -46,18 +46,16 @@ export default function Hero({ onStartExploring, onExploreSimulations }) {
             </button>
           </div>
 
-          {/* Genuine, verified academic foundations (unsupported claims removed) */}
+          {/* Genuine, verified academic foundations */}
           <div className="hero-academic-badges">
             <div className="badge-item">
               <span className="badge-number">100%</span>
               <span className="badge-label">Open Web Standards • No Plugins</span>
             </div>
-            <div className="badge-divider" aria-hidden="true">/</div>
             <div className="badge-item">
               <span className="badge-number">3 Modules</span>
               <span className="badge-label">Physics • Chemistry • Biology</span>
             </div>
-            <div className="badge-divider" aria-hidden="true">/</div>
             <div className="badge-item">
               <span className="badge-number">Live Solvers</span>
               <span className="badge-label">Mathematically Verifiable</span>

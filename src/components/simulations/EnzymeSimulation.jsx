@@ -59,7 +59,7 @@ export default function EnzymeSimulation() {
         <div className="sim-controls-panel">
           <div className="control-group">
             <div className="control-header">
-              <label htmlFor="substrate-slider">Substrate Concentration ($[S]$)</label>
+              <label htmlFor="substrate-slider">Substrate Concentration ([S])</label>
               <span className="control-readout">{substrateConc.toFixed(1)} mM</span>
             </div>
             <input
@@ -109,7 +109,7 @@ export default function EnzymeSimulation() {
 
         <div className="sim-readouts-grid">
           <div className="readout-box">
-            <span className="readout-title">Reaction Rate ($V$)</span>
+            <span className="readout-title">Reaction Rate (V)</span>
             <span className="readout-stat">{velocity.toFixed(1)} µmol/min</span>
           </div>
           <div className="readout-box">

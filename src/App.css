@@ -278,38 +278,48 @@
 }
 
 .hero-academic-badges {
-  display: flex;
-  align-items: center;
-  gap: 18px;
-  padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  padding-top: 28px;
   border-top: 1px solid var(--border-subtle);
-  flex-wrap: wrap;
+  width: 100%;
 }
 
 .badge-item {
   display: flex;
   flex-direction: column;
+  gap: 6px;
+  padding: 0 20px;
+}
+
+.badge-item:first-child {
+  padding-left: 0;
+}
+
+.badge-item:not(:last-child) {
+  border-right: 1px solid var(--border-subtle);
 }
 
 .badge-number {
   font-family: var(--font-serif);
-  font-size: 1.35rem;
+  font-size: 1.3rem;
   font-weight: 600;
   color: var(--color-charcoal);
-  line-height: 1.1;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .badge-label {
   font-family: var(--font-mono);
   font-size: 0.68rem;
+  line-height: 1.45;
   text-transform: uppercase;
   color: var(--color-charcoal-subtle);
-  letter-spacing: 0.05em;
+  letter-spacing: 0.04em;
 }
 
 .badge-divider {
-  color: var(--border-editorial);
-  font-size: 1.2rem;
+  display: none;
 }
 
 /* Hero Visual Area: Scientific Plate */
@@ -586,16 +596,71 @@
   background-color: var(--bg-surface);
 }
 
+.simulation-scope-bar {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.scope-pill-btn {
+  font-family: var(--font-mono);
+  font-size: 0.82rem;
+  padding: 8px 16px;
+  border: 1px solid var(--border-editorial);
+  background-color: var(--bg-card);
+  color: var(--color-charcoal);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+  cursor: pointer;
+}
+
+.scope-pill-btn:hover {
+  border-color: var(--color-charcoal);
+}
+
+.scope-pill-btn.selected {
+  background-color: var(--color-forest);
+  color: #ffffff;
+  border-color: var(--color-forest);
+}
+
+.simulation-tabs-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 28px;
+}
+
 .simulation-tabs-bar {
   display: flex;
-  gap: 12px;
-  margin-bottom: 28px;
+  gap: 10px;
+  margin-bottom: 0;
   border-bottom: 1px solid var(--border-editorial);
   padding-bottom: 12px;
   overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  max-width: 100%;
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-editorial) transparent;
+}
+
+.simulation-tabs-bar::-webkit-scrollbar {
+  height: 4px;
+}
+
+.simulation-tabs-bar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.simulation-tabs-bar::-webkit-scrollbar-thumb {
+  background-color: var(--border-editorial);
+  border-radius: 2px;
 }
 
 .sim-tab-btn {
+  flex-shrink: 0;
   font-family: var(--font-mono);
   font-size: 0.84rem;
   color: var(--color-charcoal-muted);
@@ -626,6 +691,7 @@
   background-color: var(--bg-card);
   box-shadow: var(--shadow-subtle);
   overflow: hidden;
+  min-width: 0;
 }
 
 .sim-details-pane {
@@ -633,6 +699,16 @@
   display: flex;
   flex-direction: column;
   border-right: 1px solid var(--border-editorial);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.sim-viewport-pane {
+  background-color: var(--bg-warm-ivory);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  max-width: 100%;
 }
 
 .sim-meta {
@@ -822,6 +898,152 @@
   min-height: 360px;
 }
 
+/* Plant Kingdom Responsive Matrix & Detail Card */
+.plant-kingdom-canvas-wrapper {
+  display: block;
+  padding: 20px;
+  overflow: hidden;
+}
+
+.active-division-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-editorial);
+  padding: 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  box-shadow: var(--shadow-subtle);
+}
+
+.active-division-title {
+  font-family: var(--font-serif);
+  font-size: 1.15rem;
+  color: var(--color-charcoal);
+  margin-bottom: 6px;
+}
+
+.active-division-summary {
+  font-size: 0.88rem;
+  color: var(--color-charcoal-muted);
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.active-division-genera {
+  font-size: 0.8rem;
+  font-family: var(--font-mono);
+  color: var(--color-forest);
+  word-break: break-word;
+}
+
+.table-responsive-wrapper {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+}
+
+.table-scroll-hint {
+  display: none;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--color-forest);
+  margin-bottom: 8px;
+  padding: 5px 10px;
+  background-color: var(--color-forest-tint);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle);
+}
+
+.scroll-hint-icon {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.table-scroll-container {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border: 1px solid var(--border-editorial);
+  border-radius: var(--radius-sm);
+  background-color: var(--bg-card);
+  scrollbar-width: thin;
+  scrollbar-color: var(--border-editorial) transparent;
+}
+
+.table-scroll-container::-webkit-scrollbar {
+  height: 5px;
+}
+
+.table-scroll-container::-webkit-scrollbar-thumb {
+  background-color: var(--border-editorial);
+  border-radius: 3px;
+}
+
+.ncert-matrix-table {
+  width: 100%;
+  min-width: 540px;
+  border-collapse: collapse;
+  font-size: 0.78rem;
+  font-family: var(--font-mono);
+  text-align: left;
+}
+
+.ncert-matrix-table th {
+  background-color: var(--bg-muted);
+  padding: 10px 12px;
+  font-weight: 600;
+  color: var(--color-charcoal);
+  border-bottom: 1px solid var(--border-editorial);
+  white-space: nowrap;
+}
+
+.matrix-row {
+  cursor: pointer;
+  border-bottom: 1px solid var(--border-subtle);
+  transition: background-color 0.15s ease;
+}
+
+.matrix-row:hover {
+  background-color: var(--bg-muted);
+}
+
+.matrix-row.row-selected {
+  background-color: var(--color-forest-tint);
+  font-weight: 600;
+}
+
+.matrix-row.row-milestone:not(.row-selected) {
+  background-color: rgba(168, 84, 55, 0.08);
+}
+
+.ncert-matrix-table td {
+  padding: 9px 12px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.cell-division {
+  color: var(--color-charcoal);
+  font-weight: 500;
+}
+
+.cell-present {
+  color: var(--color-forest);
+}
+
+.cell-muted {
+  color: var(--color-charcoal-subtle);
+}
+
+.cell-dominant {
+  color: var(--color-charcoal);
+}
+
+.cell-highlight {
+  color: var(--color-terracotta);
+}
+
 .interactive-sim-svg {
   width: 100%;
   max-width: 440px;
@@ -840,6 +1062,13 @@
 .equation-annotation {
   font-size: 0.8rem;
   color: var(--color-charcoal-subtle);
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.equation-annotation code {
+  white-space: normal;
+  word-break: break-word;
 }
 
 /* --------------------------------------------------------------------------
@@ -1103,6 +1332,14 @@
     justify-content: flex-start;
   }
 
+  .hero-academic-badges {
+    padding-top: 24px;
+  }
+
+  .badge-item {
+    padding: 0 16px;
+  }
+
   .subjects-grid {
     grid-template-columns: 1fr;
     gap: 20px;
@@ -1115,6 +1352,10 @@
   .sim-details-pane {
     border-right: none;
     border-bottom: 1px solid var(--border-editorial);
+  }
+
+  .table-scroll-hint {
+    display: inline-flex;
   }
 
   .philosophy-layout {
@@ -1153,6 +1394,18 @@
     font-size: 2.1rem;
   }
 
+  .sim-details-pane {
+    padding: 28px 20px;
+  }
+
+  .plant-kingdom-canvas-wrapper {
+    padding: 16px 14px;
+  }
+
+  .active-division-card {
+    padding: 14px;
+  }
+
   .footer-top-grid {
     grid-template-columns: 1fr;
     gap: 28px;
@@ -1161,5 +1414,133 @@
   .footer-bottom-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+}
+
+@media (max-width: 640px) {
+  .container {
+    padding: 0 16px;
+  }
+
+  .section {
+    padding: 56px 0;
+  }
+
+  .section-header {
+    margin-bottom: 28px;
+  }
+
+  .hero-academic-badges {
+    grid-template-columns: 1fr;
+    gap: 16px;
+    padding-top: 20px;
+  }
+
+  .badge-item {
+    padding: 0 0 16px 0;
+    border-right: none;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .badge-item:first-child {
+    padding-left: 0;
+  }
+
+  .badge-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .simulation-scope-bar {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  .scope-pill-btn {
+    width: 100%;
+    text-align: center;
+    padding: 8px 6px;
+    font-size: 0.74rem;
+  }
+
+  .simulation-tabs-bar {
+    padding-bottom: 10px;
+    gap: 8px;
+  }
+
+  .sim-tab-btn {
+    font-size: 0.76rem;
+    padding: 8px 12px;
+  }
+
+  .sim-details-pane {
+    padding: 20px 14px;
+  }
+
+  .sim-controls-panel {
+    padding: 14px 12px;
+    gap: 14px;
+  }
+
+  .viewport-canvas-wrapper {
+    padding: 14px 10px;
+    min-height: auto;
+  }
+
+  .sim-title {
+    font-size: 1.45rem;
+  }
+
+  .sim-summary {
+    font-size: 0.9rem;
+    margin-bottom: 16px;
+  }
+
+  .gravity-preset-buttons {
+    gap: 6px;
+  }
+
+  .preset-btn {
+    font-size: 0.74rem;
+    padding: 7px 10px;
+    min-height: 36px;
+  }
+
+  /* Responsive Numerical Readouts: Row layout avoids text squashing & overlap */
+  .sim-readouts-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  .readout-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 14px;
+    gap: 12px;
+  }
+
+  .readout-title {
+    margin-bottom: 0;
+    font-size: 0.68rem;
+    flex-shrink: 0;
+  }
+
+  .readout-stat {
+    font-size: 0.95rem;
+    text-align: right;
+    word-break: break-word;
+  }
+
+  .viewport-footer {
+    padding: 10px 14px;
+  }
+
+  .plant-kingdom-canvas-wrapper {
+    padding: 12px 10px;
   }
 }

@@ -8,11 +8,11 @@ export default function SubjectSection({ onSelectSubject }) {
         <div className="section-header">
           <div className="editorial-eyebrow">
             <span className="eyebrow-rule" aria-hidden="true"></span>
-            <span>Disciplines of Inquiry</span>
+            <span>Class 11 NCERT Syllabus Alignment</span>
           </div>
-          <h2 className="section-title">Explore Core Scientific Fields</h2>
+          <h2 className="section-title">Core Class 11 Chapter Modules</h2>
           <p className="section-intro">
-            Each scientific discipline provides dedicated computational modules built to uncover invisible forces, macroscopic laws, and molecular equilibria.
+            Targeted interactive learning experiences mapped directly to Class 11 NCERT textbooks: Motion in a Plane (Physics Chapter 4), Some Basic Concepts of Chemistry (Chemistry Chapter 1), and Plant Kingdom (Biology Chapter 3).
           </p>
         </div>
 
