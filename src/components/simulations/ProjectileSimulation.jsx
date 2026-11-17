@@ -118,7 +118,7 @@ export default function ProjectileSimulation() {
 
           <div className="control-group">
             <label className="control-sublabel">Classical NCERT Launch Presets</label>
-            <div className="gravity-preset-buttons">
+            <div className="preset-button-group">
               <button
                 type="button"
                 className={`preset-btn ${angle === 30 ? 'selected' : ''}`}
@@ -144,7 +144,7 @@ export default function ProjectileSimulation() {
           </div>
         </div>
 
-        <div className="sim-readouts-grid">
+        <div className="sim-readouts-grid" aria-live="polite" aria-atomic="true">
           <div className="readout-box">
             <span className="readout-title">Horizontal Range (R)</span>
             <span className="readout-stat">{horizontalRange.toFixed(1)} m</span>
@@ -168,7 +168,7 @@ export default function ProjectileSimulation() {
 
         <div className="viewport-canvas-wrapper">
           <svg viewBox="0 0 400 300" className="interactive-sim-svg" aria-label="Parabolic projectile trajectory diagram">
-            <rect width="100%" height="100%" fill="#faf8f3" />
+            <rect width="100%" height="100%" fill="var(--bg-warm-ivory)" />
 
             {/* Measurement Grid */}
             <defs>
@@ -179,49 +179,49 @@ export default function ProjectileSimulation() {
             <rect width="100%" height="100%" fill="url(#proj-grid)" />
 
             {/* Ground line */}
-            <line x1="20" y1={originY} x2="380" y2={originY} stroke="#232724" strokeWidth="2" />
-            <line x1={originX} y1="30" x2={originX} y2={originY} stroke="#7d8780" strokeWidth="1" strokeDasharray="3 3" />
+            <line x1="20" y1={originY} x2="380" y2={originY} stroke="var(--color-charcoal)" strokeWidth="2" />
+            <line x1={originX} y1="30" x2={originX} y2={originY} stroke="var(--color-charcoal-subtle)" strokeWidth="1" strokeDasharray="3 3" />
 
             {/* Parabolic Trajectory Path */}
-            <path d={trajectoryD} fill="none" stroke="#1b3a2b" strokeWidth="2.5" />
+            <path d={trajectoryD} fill="none" stroke="var(--color-forest)" strokeWidth="2.5" />
 
             {/* Launch vector v0 */}
-            <line x1={originX} y1={originY} x2={vecHeadX} y2={vecHeadY} stroke="#a85437" strokeWidth="2" />
+            <line x1={originX} y1={originY} x2={vecHeadX} y2={vecHeadY} stroke="var(--color-terracotta)" strokeWidth="2" />
             <polygon
               points={`${vecHeadX},${vecHeadY} ${vecHeadX - 6 * Math.cos(angleRad - 0.4)},${vecHeadY + 6 * Math.sin(angleRad - 0.4)} ${vecHeadX - 6 * Math.cos(angleRad + 0.4)},${vecHeadY + 6 * Math.sin(angleRad + 0.4)}`}
-              fill="#a85437"
+              fill="var(--color-terracotta)"
             />
-            <text x={vecHeadX + 4} y={vecHeadY - 4} fontSize="11" fontFamily="var(--font-mono)" fill="#a85437" fontWeight="600">
+            <text x={vecHeadX + 4} y={vecHeadY - 4} fontSize="11" fontFamily="var(--font-mono)" fill="var(--color-terracotta)" fontWeight="600">
               v₀
             </text>
 
             {/* Component vectors (v0x and v0y) */}
-            <line x1={originX} y1={originY} x2={vxHeadX} y2={originY} stroke="#496b56" strokeWidth="1.5" strokeDasharray="2 2" />
-            <text x={vxHeadX - 10} y={originY + 14} fontSize="9" fontFamily="var(--font-mono)" fill="#496b56">
+            <line x1={originX} y1={originY} x2={vxHeadX} y2={originY} stroke="var(--color-sage)" strokeWidth="1.5" strokeDasharray="2 2" />
+            <text x={vxHeadX - 10} y={originY + 14} fontSize="9" fontFamily="var(--font-mono)" fill="var(--color-sage)">
               v₀ₓ={v0x.toFixed(1)}
             </text>
 
-            <line x1={originX} y1={originY} x2={originX} y2={vyHeadY} stroke="#496b56" strokeWidth="1.5" strokeDasharray="2 2" />
-            <text x={originX - 35} y={vyHeadY + 10} fontSize="9" fontFamily="var(--font-mono)" fill="#496b56">
+            <line x1={originX} y1={originY} x2={originX} y2={vyHeadY} stroke="var(--color-sage)" strokeWidth="1.5" strokeDasharray="2 2" />
+            <text x={originX - 35} y={vyHeadY + 10} fontSize="9" fontFamily="var(--font-mono)" fill="var(--color-sage)">
               v₀y={v0y.toFixed(1)}
             </text>
 
             {/* Apex (H_max) marker */}
-            <line x1={originX} y1={apexY} x2={apexX} y2={apexY} stroke="#c08832" strokeWidth="1" strokeDasharray="3 3" />
-            <line x1={apexX} y1={apexY} x2={apexX} y2={originY} stroke="#c08832" strokeWidth="1" strokeDasharray="3 3" />
-            <circle cx={apexX} cy={apexY} r="4" fill="#c08832" />
-            <text x={apexX - 15} y={apexY - 8} fontSize="10" fontFamily="var(--font-mono)" fill="#c08832">
+            <line x1={originX} y1={apexY} x2={apexX} y2={apexY} stroke="var(--color-amber)" strokeWidth="1" strokeDasharray="3 3" />
+            <line x1={apexX} y1={apexY} x2={apexX} y2={originY} stroke="var(--color-amber)" strokeWidth="1" strokeDasharray="3 3" />
+            <circle cx={apexX} cy={apexY} r="4" fill="var(--color-amber)" />
+            <text x={apexX - 15} y={apexY - 8} fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-amber)">
               H={maxHeight.toFixed(1)}m
             </text>
 
             {/* Landing marker (Range R) */}
-            <circle cx={landingX} cy={originY} r="4" fill="#1b3a2b" />
-            <text x={landingX - 15} y={originY + 16} fontSize="10" fontFamily="var(--font-mono)" fill="#1b3a2b" fontWeight="600">
+            <circle cx={landingX} cy={originY} r="4" fill="var(--color-forest)" />
+            <text x={landingX - 15} y={originY + 16} fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-forest)" fontWeight="600">
               R={horizontalRange.toFixed(1)}m
             </text>
 
             {/* Launch Origin point */}
-            <circle cx={originX} cy={originY} r="4" fill="#232724" />
+            <circle cx={originX} cy={originY} r="4" fill="var(--color-charcoal)" />
           </svg>
         </div>
 

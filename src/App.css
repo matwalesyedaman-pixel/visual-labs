@@ -11,21 +11,49 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: var(--space-2);
   font-family: var(--font-sans);
   font-size: 0.95rem;
   font-weight: 500;
   line-height: 1;
-  padding: 12px 24px;
+  padding: var(--space-3) var(--space-6);
+  min-height: 44px;
   border-radius: var(--radius-sm);
   transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
   cursor: pointer;
 }
 
+.btn:focus-visible,
+.scope-pill-btn:focus-visible,
+.sim-tab-btn:focus-visible,
+.preset-btn:focus-visible,
+.entity-pill-btn:focus-visible,
+.subject-explore-link:focus-visible,
+.mobile-menu-toggle:focus-visible,
+.nav-links a:focus-visible,
+.brand-identity:focus-visible,
+.mobile-nav-list a:focus-visible,
+.matrix-row:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.footer-links-list a:focus-visible,
+.footer-bottom-links a:focus-visible {
+  outline: 2px solid var(--color-amber);
+  outline-offset: 3px;
+  border-radius: var(--radius-xs);
+}
+
+.editorial-slider:focus-visible {
+  outline: 2px solid var(--color-forest);
+  outline-offset: 4px;
+}
+
 .btn-primary {
   background-color: var(--color-forest);
-  color: #ffffff;
+  color: var(--bg-surface);
   border: 1px solid var(--color-forest);
 }
 
@@ -36,7 +64,6 @@
 }
 
 .btn-secondary {
-  background-color: transparent;
   color: var(--color-charcoal);
   border: 1px solid var(--border-editorial);
   background-color: var(--bg-card);
@@ -49,10 +76,10 @@
 }
 
 .btn-nav {
-  padding: 8px 18px;
-  font-size: 0.88rem;
+  padding: var(--space-2) 18px;
+  font-size: var(--font-size-sm);
   background-color: var(--color-forest);
-  color: #ffffff;
+  color: var(--bg-surface);
   border: 1px solid var(--color-forest);
   border-radius: var(--radius-sm);
 }
@@ -192,15 +219,20 @@
   display: none;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   gap: 6px;
-  width: 36px;
-  height: 36px;
-  padding: 4px;
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  min-height: 44px;
+  padding: 8px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
 }
 
 .menu-bar {
   display: block;
-  width: 100%;
+  width: 24px;
   height: 2px;
   background-color: var(--color-charcoal);
   transition: transform 0.2s ease;
@@ -225,7 +257,9 @@
 .mobile-nav-list a {
   font-size: 1.1rem;
   color: var(--color-charcoal);
-  display: block;
+  display: flex;
+  align-items: center;
+  min-height: 44px;
   padding: 8px 0;
 }
 
@@ -237,7 +271,7 @@
    2. Hero Section
    -------------------------------------------------------------------------- */
 .hero-section {
-  padding: 72px 0 64px;
+  padding: var(--space-18) 0 var(--space-16);
   border-bottom: 1px solid var(--border-editorial);
   background-color: var(--bg-warm-ivory);
 }
@@ -255,19 +289,19 @@
 }
 
 .hero-headline {
-  font-size: 3.4rem;
+  font-size: var(--font-size-4xl);
   line-height: 1.12;
   letter-spacing: -0.025em;
   color: var(--color-charcoal);
-  margin: 12px 0 20px;
+  margin: var(--space-3) 0 var(--space-5);
 }
 
 .hero-description {
-  font-size: 1.15rem;
+  font-size: var(--font-size-md);
   line-height: 1.65;
   color: var(--color-charcoal-muted);
   max-width: 540px;
-  margin-bottom: 32px;
+  margin-bottom: var(--space-8);
 }
 
 .hero-cta-group {
@@ -427,13 +461,13 @@
    Shared Section Architecture
    -------------------------------------------------------------------------- */
 .section {
-  padding: 88px 0;
+  padding: var(--section-padding-y) 0;
   border-bottom: 1px solid var(--border-editorial);
 }
 
 .section-header {
   max-width: 680px;
-  margin-bottom: 48px;
+  margin-bottom: var(--space-12);
 }
 
 .section-title {
@@ -441,11 +475,11 @@
   line-height: 1.18;
   letter-spacing: -0.02em;
   color: var(--color-charcoal);
-  margin: 10px 0 16px;
+  margin: 10px 0 var(--space-4);
 }
 
 .section-intro {
-  font-size: 1.1rem;
+  font-size: var(--font-size-md);
   line-height: 1.6;
   color: var(--color-charcoal-muted);
 }
@@ -576,7 +610,8 @@
   font-weight: 600;
   color: var(--card-accent, var(--color-forest));
   text-decoration: none;
-  padding: 0;
+  padding: 4px 0;
+  min-height: 44px;
   transition: gap 0.2s ease;
 }
 
@@ -607,6 +642,10 @@
   font-family: var(--font-mono);
   font-size: 0.82rem;
   padding: 8px 16px;
+  min-height: 38px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   border: 1px solid var(--border-editorial);
   background-color: var(--bg-card);
   color: var(--color-charcoal);
@@ -623,6 +662,17 @@
   background-color: var(--color-forest);
   color: #ffffff;
   border-color: var(--color-forest);
+}
+
+.supplementary-notice-banner {
+  background-color: var(--bg-muted);
+  border: 1px solid var(--border-subtle);
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  margin-bottom: 16px;
+  font-size: 0.82rem;
+  color: var(--color-charcoal-muted);
+  font-family: var(--font-mono);
 }
 
 .simulation-tabs-wrapper {
@@ -763,6 +813,10 @@
   gap: 6px;
 }
 
+.control-group-spaced {
+  margin-top: var(--space-4);
+}
+
 .control-header {
   display: flex;
   justify-content: space-between;
@@ -790,42 +844,89 @@
   width: 100%;
   accent-color: var(--color-forest);
   cursor: pointer;
-  margin: 6px 0;
+  margin: var(--space-2) 0;
+  height: 28px;
 }
 
 .slider-ticks {
   display: flex;
   justify-content: space-between;
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--font-size-2xs);
   color: var(--color-charcoal-subtle);
 }
 
-.gravity-preset-buttons {
+/* Entity Selectors: Chemical Substances & Botanical Divisions */
+.entity-selector-group {
   display: flex;
-  gap: 8px;
+  gap: var(--space-2);
   flex-wrap: wrap;
 }
 
-.preset-btn {
-  font-family: var(--font-mono);
-  font-size: 0.74rem;
-  padding: 6px 10px;
+.entity-pill-btn {
+  font-family: var(--font-sans);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  padding: 8px 14px;
+  min-height: 40px;
   border: 1px solid var(--border-editorial);
   background-color: var(--bg-card);
   color: var(--color-charcoal);
   border-radius: var(--radius-sm);
   transition: all 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.entity-pill-btn:hover {
+  border-color: var(--color-charcoal);
+  background-color: var(--bg-stone);
+}
+
+.entity-pill-btn.selected {
+  background-color: var(--color-forest);
+  color: var(--bg-surface);
+  border-color: var(--color-forest);
+  font-weight: 600;
+}
+
+/* Numerical Parameter Presets: Angles, Molar Steps, Volumes, Concentrations */
+.preset-button-group,
+.gravity-preset-buttons {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.preset-btn {
+  font-family: var(--font-mono);
+  font-size: var(--font-size-2xs);
+  padding: 7px 12px;
+  min-height: 38px;
+  border: 1px solid var(--border-editorial);
+  background-color: var(--bg-card);
+  color: var(--color-charcoal);
+  border-radius: var(--radius-sm);
+  transition: all 0.15s ease;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .preset-btn:hover {
   border-color: var(--color-charcoal);
+  background-color: var(--bg-stone);
 }
 
 .preset-btn.selected {
   background-color: var(--color-forest);
-  color: #ffffff;
+  color: var(--bg-surface);
   border-color: var(--color-forest);
+  font-weight: 600;
 }
 
 .sim-readouts-grid {
@@ -854,15 +955,13 @@
 
 .readout-stat {
   font-family: var(--font-mono);
-  font-size: 1.15rem;
+  font-size: var(--font-size-md);
   font-weight: 600;
   color: var(--color-charcoal);
 }
 
-.sim-viewport-pane {
-  background-color: var(--bg-warm-ivory);
-  display: flex;
-  flex-direction: column;
+.readout-stat.stat-text {
+  font-size: var(--font-size-sm);
 }
 
 .viewport-header {
@@ -1014,7 +1113,7 @@
 }
 
 .matrix-row.row-milestone:not(.row-selected) {
-  background-color: rgba(168, 84, 55, 0.08);
+  background-color: var(--color-terracotta-tint);
 }
 
 .ncert-matrix-table td {
@@ -1208,17 +1307,17 @@
    6. Footer
    -------------------------------------------------------------------------- */
 .site-footer {
-  background-color: #1a251e;
-  color: #d1d9d4;
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
   padding: 72px 0 36px;
-  border-top: 1px solid #28372d;
+  border-top: 1px solid var(--color-dark-border);
 }
 
 .footer-top-grid {
   display: grid;
   grid-template-columns: 1.8fr 1fr 1fr 1fr;
-  gap: 48px;
-  margin-bottom: 56px;
+  gap: var(--space-12);
+  margin-bottom: var(--space-14);
 }
 
 .brand-col {
@@ -1229,13 +1328,13 @@
 .footer-brand {
   display: flex;
   align-items: center;
-  gap: 10px;
-  margin-bottom: 16px;
-  color: #ffffff;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+  color: var(--bg-surface);
 }
 
 .footer-brand .brand-symbol {
-  color: #74a885;
+  color: var(--color-dark-accent);
 }
 
 .footer-brand-name {
@@ -1248,24 +1347,24 @@
 .footer-mission {
   font-size: 0.92rem;
   line-height: 1.65;
-  color: #9cb1a3;
-  margin-bottom: 20px;
+  color: var(--color-dark-muted);
+  margin-bottom: var(--space-5);
   max-width: 380px;
 }
 
 .academic-edition-tag {
   font-family: var(--font-mono);
-  font-size: 0.68rem;
+  font-size: var(--font-size-2xs);
   letter-spacing: 0.1em;
-  color: #74a885;
+  color: var(--color-dark-accent);
 }
 
 .footer-heading {
   font-family: var(--font-mono);
-  font-size: 0.74rem;
+  font-size: var(--font-size-xs);
   text-transform: uppercase;
   letter-spacing: 0.1em;
-  color: #ffffff;
+  color: var(--bg-surface);
   margin-bottom: 18px;
   font-weight: 600;
 }
@@ -1281,38 +1380,38 @@
 
 .footer-links-list a {
   font-size: 0.9rem;
-  color: #9cb1a3;
+  color: var(--color-dark-muted);
   transition: color 0.15s ease;
 }
 
 .footer-links-list a:hover {
-  color: #ffffff;
+  color: var(--bg-surface);
 }
 
 .footer-bottom-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 28px;
-  border-top: 1px solid #28372d;
-  font-size: 0.82rem;
-  color: #7b9484;
+  padding-top: var(--space-7);
+  border-top: 1px solid var(--color-dark-border);
+  font-size: var(--font-size-sm);
+  color: var(--color-dark-subtle);
   flex-wrap: wrap;
-  gap: 16px;
+  gap: var(--space-4);
 }
 
 .copyright-text {
-  font-size: 0.82rem;
+  font-size: var(--font-size-sm);
 }
 
 .footer-bottom-links {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--space-3);
 }
 
 .dot-separator {
-  color: #435b4c;
+  color: var(--color-dark-divider);
 }
 
 /* --------------------------------------------------------------------------
@@ -1423,7 +1522,7 @@
   }
 
   .section {
-    padding: 56px 0;
+    padding: var(--section-padding-mobile-y) 0;
   }
 
   .section-header {
@@ -1461,8 +1560,12 @@
   .scope-pill-btn {
     width: 100%;
     text-align: center;
-    padding: 8px 6px;
-    font-size: 0.74rem;
+    padding: 10px 8px;
+    font-size: 0.76rem;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .simulation-tabs-bar {
@@ -1471,8 +1574,12 @@
   }
 
   .sim-tab-btn {
-    font-size: 0.76rem;
-    padding: 8px 12px;
+    font-size: 0.78rem;
+    padding: 10px 14px;
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 
   .sim-details-pane {
@@ -1498,14 +1605,22 @@
     margin-bottom: 16px;
   }
 
-  .gravity-preset-buttons {
-    gap: 6px;
+  .preset-button-group,
+  .gravity-preset-buttons,
+  .entity-selector-group {
+    gap: 8px;
   }
 
   .preset-btn {
-    font-size: 0.74rem;
-    padding: 7px 10px;
-    min-height: 36px;
+    font-size: 0.76rem;
+    padding: 8px 12px;
+    min-height: 44px;
+  }
+
+  .entity-pill-btn {
+    font-size: 0.84rem;
+    padding: 10px 14px;
+    min-height: 44px;
   }
 
   /* Responsive Numerical Readouts: Row layout avoids text squashing & overlap */

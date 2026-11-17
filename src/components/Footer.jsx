@@ -7,7 +7,7 @@ export default function Footer({ onNavigate }) {
   }
 
   return (
-    <footer className="site-footer">
+    <footer className="site-footer" aria-label="Visual Labs Footer">
       <div className="container footer-container">
         <div className="footer-top-grid">
           <div className="footer-col brand-col">

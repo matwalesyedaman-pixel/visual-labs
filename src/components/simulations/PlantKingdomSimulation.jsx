@@ -95,12 +95,12 @@ export default function PlantKingdomSimulation() {
         {/* Division Selector Buttons */}
         <div className="sim-controls-panel">
           <label className="control-sublabel">Select Plant Division</label>
-          <div className="gravity-preset-buttons">
+          <div className="entity-selector-group">
             {PLANT_DIVISIONS.map((item) => (
               <button
                 key={item.id}
                 type="button"
-                className={`preset-btn ${selectedDivisionId === item.id ? 'selected' : ''}`}
+                className={`entity-pill-btn ${selectedDivisionId === item.id ? 'selected' : ''}`}
                 onClick={() => setSelectedDivisionId(item.id)}
               >
                 {item.name.split(' ')[0]}
@@ -108,9 +108,9 @@ export default function PlantKingdomSimulation() {
             ))}
           </div>
 
-          <div className="control-group" style={{ marginTop: '14px' }}>
+          <div className="control-group control-group-spaced">
             <label className="control-sublabel">Highlight Key NCERT Evolutionary Milestone</label>
-            <div className="gravity-preset-buttons">
+            <div className="preset-button-group">
               <button
                 type="button"
                 className={`preset-btn ${activeTraitHighlight === 'all' ? 'selected' : ''}`}
@@ -144,22 +144,22 @@ export default function PlantKingdomSimulation() {
         </div>
 
         {/* Selected Division Detailed Diagnostic Card */}
-        <div className="sim-readouts-grid">
+        <div className="sim-readouts-grid" aria-live="polite" aria-atomic="true">
           <div className="readout-box">
             <span className="readout-title">Plant Body Form</span>
-            <span className="readout-stat" style={{ fontSize: '0.9rem' }}>
+            <span className="readout-stat stat-text">
               {division.bodyType}
             </span>
           </div>
           <div className="readout-box">
             <span className="readout-title">Vascular Bundles</span>
-            <span className="readout-stat" style={{ fontSize: '0.9rem' }}>
+            <span className="readout-stat stat-text">
               {division.vascularTissue}
             </span>
           </div>
           <div className="readout-box">
             <span className="readout-title">Dominant Generation</span>
-            <span className="readout-stat" style={{ fontSize: '0.9rem' }}>
+            <span className="readout-stat stat-text">
               {division.dominantPhase}
             </span>
           </div>
@@ -220,7 +220,16 @@ export default function PlantKingdomSimulation() {
                     return (
                       <tr
                         key={item.id}
+                        tabIndex={0}
+                        role="button"
+                        aria-label={`Select ${item.name}`}
                         onClick={() => setSelectedDivisionId(item.id)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            setSelectedDivisionId(item.id)
+                          }
+                        }}
                         className={`matrix-row ${isSelected ? 'row-selected' : ''} ${isMilestoneMatch ? 'row-milestone' : ''}`}
                       >
                         <td className="cell-division">

@@ -88,18 +88,7 @@ export default function SimulationShowcase({ activeTab, onTabChange }) {
         {/* Supplementary Laboratory Tabs */}
         {curriculumScope === 'supplementary' && (
           <div>
-            <div
-              style={{
-                backgroundColor: 'var(--bg-muted)',
-                border: '1px solid var(--border-subtle)',
-                padding: '10px 16px',
-                borderRadius: 'var(--radius-sm)',
-                marginBottom: '16px',
-                fontSize: '0.82rem',
-                color: 'var(--color-charcoal-muted)',
-                fontFamily: 'var(--font-mono)',
-              }}
-            >
+            <div className="supplementary-notice-banner">
               <strong>Notice:</strong> The models below are supplementary reference solvers covering oscillations, volumetric titration, and enzyme kinetics. They are retained as extension modules outside the primary Class 11 NCERT chapters.
             </div>
 

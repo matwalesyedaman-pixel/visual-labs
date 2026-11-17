@@ -90,7 +90,7 @@ export default function PendulumSimulation() {
 
           <div className="control-group">
             <label className="control-sublabel">Gravitational Environment (g)</label>
-            <div className="gravity-preset-buttons">
+            <div className="gravity-preset-buttons preset-button-group">
               <button
                 type="button"
                 className={`preset-btn ${gravity === 9.81 ? 'selected' : ''}`}
@@ -116,7 +116,7 @@ export default function PendulumSimulation() {
           </div>
         </div>
 
-        <div className="sim-readouts-grid">
+        <div className="sim-readouts-grid" aria-live="polite" aria-atomic="true">
           <div className="readout-box">
             <span className="readout-title">Oscillation Period (T)</span>
             <span className="readout-stat">{tCorrected.toFixed(2)} s</span>
@@ -140,28 +140,28 @@ export default function PendulumSimulation() {
 
         <div className="viewport-canvas-wrapper">
           <svg viewBox="0 0 400 320" className="interactive-sim-svg" aria-label="Pendulum physical simulation diagram">
-            <rect width="100%" height="100%" fill="#faf8f3" />
+            <rect width="100%" height="100%" fill="var(--bg-warm-ivory)" />
 
             {/* Ceiling support structure */}
-            <line x1="50" y1="30" x2="350" y2="30" stroke="#232724" strokeWidth="3" />
-            <line x1="200" y1="30" x2="200" y2="295" stroke="#ded7c8" strokeWidth="1" strokeDasharray="4 4" />
+            <line x1="50" y1="30" x2="350" y2="30" stroke="var(--color-charcoal)" strokeWidth="3" />
+            <line x1="200" y1="30" x2="200" y2="295" stroke="var(--border-editorial)" strokeWidth="1" strokeDasharray="4 4" />
 
             {/* Trajectory circular arc */}
             <path
               d={`M ${pivotX - lengthPx * Math.sin(thetaRad)} ${bobY} Q ${pivotX} ${bobY + 12} ${bobX} ${bobY}`}
               fill="none"
-              stroke="#ded7c8"
+              stroke="var(--border-editorial)"
               strokeWidth="1.2"
               strokeDasharray="3 3"
             />
 
             {/* String rod */}
-            <line x1={pivotX} y1={pivotY} x2={bobX} y2={bobY} stroke="#1b3a2b" strokeWidth="2.5" />
-            <circle cx={pivotX} cy={pivotY} r="4.5" fill="#1b3a2b" />
+            <line x1={pivotX} y1={pivotY} x2={bobX} y2={bobY} stroke="var(--color-forest)" strokeWidth="2.5" />
+            <circle cx={pivotX} cy={pivotY} r="4.5" fill="var(--color-forest)" />
 
             {/* Bob mass */}
-            <circle cx={bobX} cy={bobY} r="18" fill="#ffffff" stroke="#1b3a2b" strokeWidth="2.5" />
-            <circle cx={bobX} cy={bobY} r="4" fill="#a85437" />
+            <circle cx={bobX} cy={bobY} r="18" fill="var(--bg-surface)" stroke="var(--color-forest)" strokeWidth="2.5" />
+            <circle cx={bobX} cy={bobY} r="4" fill="var(--color-terracotta)" />
 
             {/* Tangential Restoring Force Vector */}
             <line
@@ -169,19 +169,19 @@ export default function PendulumSimulation() {
               y1={bobY}
               x2={restoringVecX}
               y2={restoringVecY}
-              stroke="#a85437"
+              stroke="var(--color-terracotta)"
               strokeWidth="2"
             />
             <polygon
               points={`${restoringVecX},${restoringVecY} ${restoringVecX + 6},${restoringVecY + 4} ${restoringVecX + 3},${restoringVecY + 8}`}
-              fill="#a85437"
+              fill="var(--color-terracotta)"
             />
             <text
               x={restoringVecX - 10}
               y={restoringVecY - 6}
               fontSize="11"
               fontFamily="var(--font-mono)"
-              fill="#a85437"
+              fill="var(--color-terracotta)"
               fontWeight="600"
             >
               F_t

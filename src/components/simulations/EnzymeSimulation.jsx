@@ -81,7 +81,7 @@ export default function EnzymeSimulation() {
 
           <div className="control-group">
             <label className="control-sublabel">Concentration Presets</label>
-            <div className="gravity-preset-buttons">
+            <div className="preset-button-group">
               <button
                 type="button"
                 className={`preset-btn ${substrateConc === 0.5 ? 'selected' : ''}`}
@@ -107,7 +107,7 @@ export default function EnzymeSimulation() {
           </div>
         </div>
 
-        <div className="sim-readouts-grid">
+        <div className="sim-readouts-grid" aria-live="polite" aria-atomic="true">
           <div className="readout-box">
             <span className="readout-title">Reaction Rate (V)</span>
             <span className="readout-stat">{velocity.toFixed(1)} µmol/min</span>
@@ -118,7 +118,7 @@ export default function EnzymeSimulation() {
           </div>
           <div className="readout-box">
             <span className="readout-title">Kinetic Regime</span>
-            <span className="readout-stat" style={{ fontSize: '0.85rem' }}>
+            <span className="readout-stat stat-text">
               {kineticRegime}
             </span>
           </div>
@@ -133,33 +133,33 @@ export default function EnzymeSimulation() {
 
         <div className="viewport-canvas-wrapper">
           <svg viewBox="0 0 400 320" className="interactive-sim-svg" aria-label="Enzyme Michaelis-Menten velocity plot">
-            <rect width="100%" height="100%" fill="#faf8f3" />
+            <rect width="100%" height="100%" fill="var(--bg-warm-ivory)" />
 
             {/* Axes */}
-            <line x1={originX} y1={originY} x2="380" y2={originY} stroke="#232724" strokeWidth="1.5" />
-            <line x1={originX} y1={originY} x2={originX} y2="40" stroke="#232724" strokeWidth="1.5" />
-            <text x="320" y="295" fontSize="10" fontFamily="var(--font-mono)" fill="#575e58">
+            <line x1={originX} y1={originY} x2="380" y2={originY} stroke="var(--color-charcoal)" strokeWidth="1.5" />
+            <line x1={originX} y1={originY} x2={originX} y2="40" stroke="var(--color-charcoal)" strokeWidth="1.5" />
+            <text x="320" y="295" fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-charcoal-muted)">
               [S] (mM)
             </text>
-            <text x="16" y="50" fontSize="10" fontFamily="var(--font-mono)" fill="#575e58">
+            <text x="16" y="50" fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-charcoal-muted)">
               V (µmol/min)
             </text>
 
             {/* V_max Asymptote Line */}
-            <line x1={originX} y1="70" x2="380" y2="70" stroke="#7d8780" strokeWidth="1" strokeDasharray="3 3" />
-            <text x="70" y="64" fontSize="10" fontFamily="var(--font-mono)" fill="#7d8780">
+            <line x1={originX} y1="70" x2="380" y2="70" stroke="var(--color-charcoal-subtle)" strokeWidth="1" strokeDasharray="3 3" />
+            <text x="70" y="64" fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-charcoal-subtle)">
               V_max Asymptote (120 µmol/min)
             </text>
 
             {/* Half V_max dashed line */}
-            <line x1={originX} y1={halfVmaxY} x2={kmX} y2={halfVmaxY} stroke="#c08832" strokeWidth="1" strokeDasharray="2 2" />
-            <line x1={kmX} y1={halfVmaxY} x2={kmX} y2={originY} stroke="#c08832" strokeWidth="1" strokeDasharray="2 2" />
-            <text x={kmX - 6} y="286" fontSize="10" fontFamily="var(--font-mono)" fill="#c08832">
+            <line x1={originX} y1={halfVmaxY} x2={kmX} y2={halfVmaxY} stroke="var(--color-amber)" strokeWidth="1" strokeDasharray="2 2" />
+            <line x1={kmX} y1={halfVmaxY} x2={kmX} y2={originY} stroke="var(--color-amber)" strokeWidth="1" strokeDasharray="2 2" />
+            <text x={kmX - 6} y="286" fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-amber)">
               Km
             </text>
 
             {/* Exact Michaelis-Menten Hyperbolic Curve */}
-            <path d={curvePathD} fill="none" stroke="#496b56" strokeWidth="2.75" />
+            <path d={curvePathD} fill="none" stroke="var(--color-sage)" strokeWidth="2.75" />
 
             {/* Active operating point indicator */}
             <line
@@ -167,7 +167,7 @@ export default function EnzymeSimulation() {
               y1={activePointY}
               x2={activePointX}
               y2={activePointY}
-              stroke="#a85437"
+              stroke="var(--color-terracotta)"
               strokeWidth="1"
               strokeDasharray="2 2"
             />
@@ -176,11 +176,11 @@ export default function EnzymeSimulation() {
               y1={activePointY}
               x2={activePointX}
               y2={originY}
-              stroke="#a85437"
+              stroke="var(--color-terracotta)"
               strokeWidth="1"
               strokeDasharray="2 2"
             />
-            <circle cx={activePointX} cy={activePointY} r="5" fill="#a85437" stroke="#ffffff" strokeWidth="1.5" />
+            <circle cx={activePointX} cy={activePointY} r="5" fill="var(--color-terracotta)" stroke="var(--bg-surface)" strokeWidth="1.5" />
           </svg>
         </div>
 

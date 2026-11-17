@@ -21,18 +21,74 @@
   --color-terracotta: #a85437;
   --color-terracotta-tint: #faf0ec;
 
+  /* Accent & Marker Tokens */
+  --color-amber: #c08832;
+
+  /* Editorial Dark Theme (Footer / Scholarly Colophon) */
+  --color-dark-bg: #1a251e;
+  --color-dark-border: #28372d;
+  --color-dark-text: #d1d9d4;
+  --color-dark-muted: #9cb1a3;
+  --color-dark-subtle: #7b9484;
+  --color-dark-accent: #74a885;
+  --color-dark-divider: #435b4c;
+
+  /* Chemistry pH Indicator Spectrum */
+  --color-ph-acid-strong: #a85437;
+  --color-ph-acid-weak: #c27632;
+  --color-ph-neutral: #3e7356;
+  --color-ph-base-weak: #2c5d88;
+  --color-ph-base-strong: #583b78;
+
   --border-editorial: #ded7c8;
   --border-subtle: #eae4d8;
   --border-strong: #242724;
 
-  /* Typography */
+  /* Focus & Accessibility */
+  --focus-ring: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--color-forest);
+
+  /* Typography Font Stacks */
   --font-serif: 'Newsreader', Georgia, 'Times New Roman', Cambria, serif;
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Consolas, monospace;
 
+  /* Reusable Typography Scale */
+  --font-size-2xs: 0.6875rem; /* ~11px - micro labels, tags, ticks */
+  --font-size-xs: 0.75rem;    /* 12px - badges, table headers, captions */
+  --font-size-sm: 0.875rem;   /* 14px - table data, secondary copy, input readouts */
+  --font-size-base: 1rem;     /* 16px - body copy, button labels */
+  --font-size-md: 1.125rem;   /* 18px - lead descriptions, active card titles */
+  --font-size-lg: 1.25rem;    /* 20px - subheadings, brand text */
+  --font-size-xl: 1.5rem;     /* 24px - simulation headings */
+  --font-size-2xl: 1.85rem;   /* ~30px - module titles, section subtitles */
+  --font-size-3xl: 2.5rem;    /* 40px - major editorial headlines */
+  --font-size-4xl: 3.4rem;    /* ~54px - hero display headline */
+
+  /* Spacing Scale (4px base) */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-7: 28px;
+  --space-8: 32px;
+  --space-9: 36px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-14: 56px;
+  --space-16: 64px;
+  --space-18: 72px;
+  --space-22: 88px;
+
+  /* Section Spacing */
+  --section-padding-y: var(--space-22);
+  --section-padding-mobile-y: var(--space-14);
+
   /* Restrained Shadows & Corners */
   --shadow-subtle: 0 1px 3px rgba(35, 39, 36, 0.05), 0 10px 24px -12px rgba(35, 39, 36, 0.06);
   --shadow-hover: 0 4px 12px rgba(35, 39, 36, 0.08), 0 18px 32px -16px rgba(35, 39, 36, 0.08);
+  --radius-xs: 2px;
   --radius-sm: 4px;
   --radius-md: 6px;
   --radius-lg: 10px;

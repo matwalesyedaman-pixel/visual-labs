@@ -89,28 +89,28 @@ export default function Hero({ onStartExploring, onExploreSimulations }) {
                 <rect width="100%" height="100%" fill="url(#hero-grid)" />
 
                 {/* Ceiling support */}
-                <line x1="80" y1="20" x2="280" y2="20" stroke="#232724" strokeWidth="2.5" />
-                <line x1="180" y1="20" x2="180" y2="28" stroke="#232724" strokeWidth="2" />
+                <line x1="80" y1="20" x2="280" y2="20" stroke="var(--color-charcoal)" strokeWidth="2.5" />
+                <line x1="180" y1="20" x2="180" y2="28" stroke="var(--color-charcoal)" strokeWidth="2" />
 
                 {/* Equilibrium vertical centerline */}
-                <line x1="180" y1="28" x2="180" y2="190" stroke="#7d8780" strokeWidth="1" strokeDasharray="3 3" />
+                <line x1="180" y1="28" x2="180" y2="190" stroke="var(--color-charcoal-subtle)" strokeWidth="1" strokeDasharray="3 3" />
 
                 {/* Trajectory arc */}
                 <path
                   d={`M ${180 - lengthPx * Math.sin(heroRad)} ${bobY} Q 180 ${bobY + 12} ${bobX} ${bobY}`}
                   fill="none"
-                  stroke="#ded7c8"
+                  stroke="var(--border-editorial)"
                   strokeWidth="1.2"
                   strokeDasharray="2 2"
                 />
 
                 {/* String line */}
-                <line x1="180" y1="28" x2={bobX} y2={bobY} stroke="#1b3a2b" strokeWidth="2" />
-                <circle cx="180" cy="28" r="3.5" fill="#1b3a2b" />
+                <line x1="180" y1="28" x2={bobX} y2={bobY} stroke="var(--color-forest)" strokeWidth="2" />
+                <circle cx="180" cy="28" r="3.5" fill="var(--color-forest)" />
 
                 {/* Mass bob */}
-                <circle cx={bobX} cy={bobY} r="14" fill="#faf8f3" stroke="#1b3a2b" strokeWidth="2.5" />
-                <circle cx={bobX} cy={bobY} r="3" fill="#a85437" />
+                <circle cx={bobX} cy={bobY} r="14" fill="var(--bg-warm-ivory)" stroke="var(--color-forest)" strokeWidth="2.5" />
+                <circle cx={bobX} cy={bobY} r="3" fill="var(--color-terracotta)" />
 
                 {/* Tension vector arrow */}
                 <line
@@ -118,11 +118,11 @@ export default function Hero({ onStartExploring, onExploreSimulations }) {
                   y1={bobY}
                   x2={bobX - 22 * Math.sin(heroRad)}
                   y2={bobY - 22 * Math.cos(heroRad)}
-                  stroke="#a85437"
+                  stroke="var(--color-terracotta)"
                   strokeWidth="1.5"
                 />
 
-                <text x="190" y="55" fontSize="10" fontFamily="var(--font-mono)" fill="#575e58">
+                <text x="190" y="55" fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-charcoal-muted)">
                   θ = {heroAngle}°
                 </text>
               </svg>

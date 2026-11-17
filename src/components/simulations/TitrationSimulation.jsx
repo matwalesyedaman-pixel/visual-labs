@@ -16,25 +16,25 @@ export default function TitrationSimulation() {
   const concH = (delta + Math.sqrt(delta * delta + 4 * kw)) / 2
   const calculatedPh = (-Math.log10(concH)).toFixed(2)
 
-  // Universal indicator color based on exact pH range
+  // Universal indicator color based on exact pH range, referencing design-system tokens
   const phNum = parseFloat(calculatedPh)
-  let indicatorColor = '#3e7356' // neutral green
+  let indicatorColor = 'var(--color-ph-neutral)' // neutral green
   let stateDescription = 'Equivalence Point (Neutral)'
 
   if (phNum < 3.0) {
-    indicatorColor = '#a85437' // acidic terracotta red
+    indicatorColor = 'var(--color-ph-acid-strong)' // acidic terracotta red
     stateDescription = 'Strongly Acidic (Excess HCl)'
   } else if (phNum < 6.0) {
-    indicatorColor = '#c27632' // moderately acidic amber
+    indicatorColor = 'var(--color-ph-acid-weak)' // moderately acidic amber
     stateDescription = 'Weakly Acidic (Approaching Endpoint)'
   } else if (phNum <= 8.0) {
-    indicatorColor = '#3e7356' // equivalence neutral green
+    indicatorColor = 'var(--color-ph-neutral)' // equivalence neutral green
     stateDescription = 'Equivalence Point (Neutral NaCl)'
   } else if (phNum <= 11.0) {
-    indicatorColor = '#2c5d88' // weakly basic blue
+    indicatorColor = 'var(--color-ph-base-weak)' // weakly basic blue
     stateDescription = 'Weakly Basic (Excess NaOH)'
   } else {
-    indicatorColor = '#583b78' // strongly basic violet
+    indicatorColor = 'var(--color-ph-base-strong)' // strongly basic violet
     stateDescription = 'Strongly Alkaline (High [OH⁻])'
   }
 
@@ -76,7 +76,7 @@ export default function TitrationSimulation() {
 
           <div className="control-group">
             <label className="control-sublabel">Direct Volume Presets</label>
-            <div className="gravity-preset-buttons">
+            <div className="preset-button-group">
               <button
                 type="button"
                 className={`preset-btn ${titrantVolume === 0 ? 'selected' : ''}`}
@@ -109,7 +109,7 @@ export default function TitrationSimulation() {
           </div>
         </div>
 
-        <div className="sim-readouts-grid">
+        <div className="sim-readouts-grid" aria-live="polite" aria-atomic="true">
           <div className="readout-box">
             <span className="readout-title">Solution pH</span>
             <span className="readout-stat" style={{ color: indicatorColor }}>
@@ -118,7 +118,7 @@ export default function TitrationSimulation() {
           </div>
           <div className="readout-box">
             <span className="readout-title">Equilibrium State</span>
-            <span className="readout-stat" style={{ fontSize: '0.92rem' }}>
+            <span className="readout-stat stat-text">
               {stateDescription}
             </span>
           </div>
@@ -137,15 +137,15 @@ export default function TitrationSimulation() {
 
         <div className="viewport-canvas-wrapper titration-canvas">
           <svg viewBox="0 0 400 320" className="interactive-sim-svg" aria-label="Chemical titration apparatus simulation">
-            <rect width="100%" height="100%" fill="#faf8f3" />
+            <rect width="100%" height="100%" fill="var(--bg-warm-ivory)" />
 
             {/* Retort stand */}
-            <rect x="70" y="20" width="8" height="270" fill="#ded7c8" />
-            <rect x="40" y="285" width="120" height="12" fill="#232724" rx="2" />
-            <rect x="70" y="80" width="70" height="6" fill="#7d8780" />
+            <rect x="70" y="20" width="8" height="270" fill="var(--border-editorial)" />
+            <rect x="40" y="285" width="120" height="12" fill="var(--color-charcoal)" rx="2" />
+            <rect x="70" y="80" width="70" height="6" fill="var(--color-charcoal-subtle)" />
 
             {/* Glass Burette Tube */}
-            <rect x="135" y="30" width="22" height="140" fill="rgba(255,255,255,0.7)" stroke="#232724" strokeWidth="1.5" />
+            <rect x="135" y="30" width="22" height="140" fill="rgba(255,255,255,0.7)" stroke="var(--color-charcoal)" strokeWidth="1.5" />
 
             {/* Liquid level inside burette (drops as volume is dispensed) */}
             <rect
@@ -157,15 +157,15 @@ export default function TitrationSimulation() {
             />
 
             {/* Burette graduations */}
-            <line x1="148" y1="50" x2="156" y2="50" stroke="#7d8780" strokeWidth="1" />
-            <line x1="148" y1="80" x2="156" y2="80" stroke="#7d8780" strokeWidth="1" />
-            <line x1="148" y1="110" x2="156" y2="110" stroke="#7d8780" strokeWidth="1" />
-            <line x1="148" y1="140" x2="156" y2="140" stroke="#7d8780" strokeWidth="1" />
+            <line x1="148" y1="50" x2="156" y2="50" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
+            <line x1="148" y1="80" x2="156" y2="80" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
+            <line x1="148" y1="110" x2="156" y2="110" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
+            <line x1="148" y1="140" x2="156" y2="140" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
 
             {/* Stopcock */}
-            <polygon points="146,170 142,185 150,185" fill="#232724" />
-            <circle cx="146" cy="177" r="4" fill="#a85437" />
-            <line x1="146" y1="185" x2="146" y2="198" stroke="#232724" strokeWidth="1.5" />
+            <polygon points="146,170 142,185 150,185" fill="var(--color-charcoal)" />
+            <circle cx="146" cy="177" r="4" fill="var(--color-terracotta)" />
+            <line x1="146" y1="185" x2="146" y2="198" stroke="var(--color-charcoal)" strokeWidth="1.5" />
 
             {/* Dispensed droplet */}
             <circle cx="146" cy="208" r="2.5" fill="#2b4d75" opacity="0.65" />
@@ -174,7 +174,7 @@ export default function TitrationSimulation() {
             <polygon
               points="130,225 162,225 195,280 97,280"
               fill="rgba(255,255,255,0.85)"
-              stroke="#232724"
+              stroke="var(--color-charcoal)"
               strokeWidth="1.8"
             />
 
@@ -187,21 +187,21 @@ export default function TitrationSimulation() {
 
             {/* Digital pH Electrode Card */}
             <g transform="translate(230, 60)">
-              <rect width="140" height="175" rx="4" fill="#ffffff" stroke="#ded7c8" strokeWidth="1.5" />
-              <text x="16" y="26" fontSize="10" fontFamily="var(--font-mono)" fill="#7d8780">
+              <rect width="140" height="175" rx="4" fill="var(--bg-surface)" stroke="var(--border-editorial)" strokeWidth="1.5" />
+              <text x="16" y="26" fontSize="10" fontFamily="var(--font-mono)" fill="var(--color-charcoal-subtle)">
                 pH ELECTRODE
               </text>
               <text x="16" y="68" fontSize="36" fontFamily="var(--font-serif)" fill={indicatorColor} fontWeight="600">
                 {calculatedPh}
               </text>
-              <line x1="16" y1="84" x2="124" y2="84" stroke="#eae4d8" strokeWidth="1" />
-              <text x="16" y="104" fontSize="10" fontFamily="var(--font-sans)" fill="#575e58">
+              <line x1="16" y1="84" x2="124" y2="84" stroke="var(--border-subtle)" strokeWidth="1" />
+              <text x="16" y="104" fontSize="10" fontFamily="var(--font-sans)" fill="var(--color-charcoal-muted)">
                 Indicator: Universal
               </text>
-              <text x="16" y="124" fontSize="10" fontFamily="var(--font-sans)" fill="#575e58">
+              <text x="16" y="124" fontSize="10" fontFamily="var(--font-sans)" fill="var(--color-charcoal-muted)">
                 Analyte: 25mL 0.1M HCl
               </text>
-              <text x="16" y="144" fontSize="10" fontFamily="var(--font-sans)" fill="#575e58">
+              <text x="16" y="144" fontSize="10" fontFamily="var(--font-sans)" fill="var(--color-charcoal-muted)">
                 Titrant: 0.1M NaOH
               </text>
             </g>

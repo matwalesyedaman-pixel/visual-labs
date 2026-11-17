@@ -84,12 +84,12 @@ export default function MoleConceptSimulation() {
         <div className="sim-controls-panel">
           <div className="control-group">
             <label className="control-sublabel">Select Substance</label>
-            <div className="gravity-preset-buttons">
+            <div className="entity-selector-group">
               {SUBSTANCES.map((item) => (
                 <button
                   key={item.id}
                   type="button"
-                  className={`preset-btn ${selectedSubstanceId === item.id ? 'selected' : ''}`}
+                  className={`entity-pill-btn ${selectedSubstanceId === item.id ? 'selected' : ''}`}
                   onClick={() => setSelectedSubstanceId(item.id)}
                 >
                   {item.name}
@@ -122,7 +122,7 @@ export default function MoleConceptSimulation() {
 
           <div className="control-group">
             <label className="control-sublabel">Quick Stoichiometric Presets</label>
-            <div className="gravity-preset-buttons">
+            <div className="preset-button-group">
               <button
                 type="button"
                 className={`preset-btn ${moles === 0.5 ? 'selected' : ''}`}
@@ -148,7 +148,7 @@ export default function MoleConceptSimulation() {
           </div>
         </div>
 
-        <div className="sim-readouts-grid">
+        <div className="sim-readouts-grid" aria-live="polite" aria-atomic="true">
           <div className="readout-box">
             <span className="readout-title">Measured Mass (m = n × M)</span>
             <span className="readout-stat">{totalMass.toFixed(2)} g</span>
@@ -172,29 +172,29 @@ export default function MoleConceptSimulation() {
 
         <div className="viewport-canvas-wrapper">
           <svg viewBox="0 0 400 300" className="interactive-sim-svg" aria-label="Laboratory analytical balance for mole concept">
-            <rect width="100%" height="100%" fill="#faf8f3" />
+            <rect width="100%" height="100%" fill="var(--bg-warm-ivory)" />
 
             {/* Laboratory Balance Base */}
-            <rect x="60" y="240" width="280" height="24" rx="3" fill="#232724" />
-            <rect x="80" y="264" width="30" height="8" rx="2" fill="#7d8780" />
-            <rect x="290" y="264" width="30" height="8" rx="2" fill="#7d8780" />
+            <rect x="60" y="240" width="280" height="24" rx="3" fill="var(--color-charcoal)" />
+            <rect x="80" y="264" width="30" height="8" rx="2" fill="var(--color-charcoal-subtle)" />
+            <rect x="290" y="264" width="30" height="8" rx="2" fill="var(--color-charcoal-subtle)" />
 
             {/* Digital Readout Screen on Balance */}
-            <rect x="130" y="244" width="140" height="16" rx="2" fill="#1b3a2b" />
-            <text x="200" y="256" fontSize="11" fontFamily="var(--font-mono)" fill="#faf8f3" textAnchor="middle">
+            <rect x="130" y="244" width="140" height="16" rx="2" fill="var(--color-forest)" />
+            <text x="200" y="256" fontSize="11" fontFamily="var(--font-mono)" fill="var(--bg-warm-ivory)" textAnchor="middle">
               {totalMass.toFixed(2)} g
             </text>
 
             {/* Central Weighing Pillar and Pan */}
-            <rect x="194" y="165" width="12" height="75" fill="#ded7c8" />
-            <rect x="110" y="160" width="180" height="8" rx="2" fill="#7d8780" />
+            <rect x="194" y="165" width="12" height="75" fill="var(--border-editorial)" />
+            <rect x="110" y="160" width="180" height="8" rx="2" fill="var(--color-charcoal-subtle)" />
 
             {/* Beaker / Container on Pan */}
-            <polygon points="150,85 250,85 240,160 160,160" fill="rgba(255,255,255,0.75)" stroke="#232724" strokeWidth="1.8" />
+            <polygon points="150,85 250,85 240,160 160,160" fill="rgba(255,255,255,0.75)" stroke="var(--color-charcoal)" strokeWidth="1.8" />
             {/* Graduations */}
-            <line x1="165" y1="105" x2="175" y2="105" stroke="#7d8780" strokeWidth="1" />
-            <line x1="163" y1="125" x2="177" y2="125" stroke="#7d8780" strokeWidth="1" />
-            <line x1="161" y1="145" x2="179" y2="145" stroke="#7d8780" strokeWidth="1" />
+            <line x1="165" y1="105" x2="175" y2="105" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
+            <line x1="163" y1="125" x2="177" y2="125" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
+            <line x1="161" y1="145" x2="179" y2="145" stroke="var(--color-charcoal-subtle)" strokeWidth="1" />
 
             {/* Substance Content in Beaker (Height scales with moles) */}
             {(() => {
@@ -214,7 +214,7 @@ export default function MoleConceptSimulation() {
             })()}
 
             {/* Substance Label Tag */}
-            <text x="200" y="130" fontSize="12" fontFamily="var(--font-serif)" fill="#1b3a2b" textAnchor="middle" fontWeight="600">
+            <text x="200" y="130" fontSize="12" fontFamily="var(--font-serif)" fill="var(--color-forest)" textAnchor="middle" fontWeight="600">
               {substance.formula}
             </text>
 
@@ -224,18 +224,18 @@ export default function MoleConceptSimulation() {
                 width="340"
                 height={substance.isGas ? 66 : 52}
                 rx="4"
-                fill="#ffffff"
-                stroke="#ded7c8"
+                fill="var(--bg-surface)"
+                stroke="var(--border-editorial)"
                 strokeWidth="1.2"
               />
-              <text x="14" y="18" fontSize="9.5" fontFamily="var(--font-mono)" fill="#7d8780">
+              <text x="14" y="18" fontSize="9.5" fontFamily="var(--font-mono)" fill="var(--color-charcoal-subtle)">
                 STOICHIOMETRIC CONVERSION
               </text>
-              <text x="14" y="36" fontSize="11" fontFamily="var(--font-sans)" fill="#232724" fontWeight="500">
+              <text x="14" y="36" fontSize="11" fontFamily="var(--font-sans)" fill="var(--color-charcoal)" fontWeight="500">
                 {moles.toFixed(2)} mol {substance.formula} = {particleMantissa} × 10²³ {substance.unitName}
               </text>
               {substance.isGas && (
-                <text x="14" y="52" fontSize="9.5" fontFamily="var(--font-mono)" fill="#a85437">
+                <text x="14" y="52" fontSize="9.5" fontFamily="var(--font-mono)" fill="var(--color-terracotta)">
                   Gas Volume at STP (273.15 K, 1 bar) = {stpVolume} L
                 </text>
               )}
