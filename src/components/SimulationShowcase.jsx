@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import ProjectileSimulation from './simulations/ProjectileSimulation'
 import MoleConceptSimulation from './simulations/MoleConceptSimulation'
 import PlantKingdomSimulation from './simulations/PlantKingdomSimulation'
@@ -7,7 +6,9 @@ import TitrationSimulation from './simulations/TitrationSimulation'
 import EnzymeSimulation from './simulations/EnzymeSimulation'
 
 export default function SimulationShowcase({ activeTab, onTabChange }) {
-  const [curriculumScope, setCurriculumScope] = useState('ncert') // 'ncert' or 'supplementary'
+  // Derive curriculumScope directly from activeTab to prevent state de-synchronization
+  const isSupplementary = ['pendulum', 'titration', 'enzyme'].includes(activeTab)
+  const curriculumScope = isSupplementary ? 'supplementary' : 'ncert'
 
   return (
     <section id="simulations" className="section simulations-section">
@@ -29,7 +30,6 @@ export default function SimulationShowcase({ activeTab, onTabChange }) {
             type="button"
             className={`scope-pill-btn ${curriculumScope === 'ncert' ? 'selected' : ''}`}
             onClick={() => {
-              setCurriculumScope('ncert')
               if (!['physics', 'chemistry', 'biology'].includes(activeTab)) {
                 onTabChange('physics')
               }
@@ -41,7 +41,6 @@ export default function SimulationShowcase({ activeTab, onTabChange }) {
             type="button"
             className={`scope-pill-btn ${curriculumScope === 'supplementary' ? 'selected' : ''}`}
             onClick={() => {
-              setCurriculumScope('supplementary')
               if (!['pendulum', 'titration', 'enzyme'].includes(activeTab)) {
                 onTabChange('pendulum')
               }
