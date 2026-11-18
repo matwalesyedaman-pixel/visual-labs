@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ParameterSlider from '../common/ParameterSlider'
 
 export default function ProjectileSimulation() {
   const [velocity, setVelocity] = useState(25) // m/s (10 to 50)
@@ -72,49 +73,29 @@ export default function ProjectileSimulation() {
         </p>
 
         <div className="sim-controls-panel">
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="proj-velocity">Initial Velocity (v₀)</label>
-              <span className="control-readout">{velocity} m/s</span>
-            </div>
-            <input
-              id="proj-velocity"
-              type="range"
-              min="10"
-              max="50"
-              step="1"
-              value={velocity}
-              onChange={(e) => setVelocity(parseInt(e.target.value, 10))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>10 m/s</span>
-              <span>25 m/s</span>
-              <span>50 m/s</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="proj-velocity"
+            label="Initial Velocity (v₀)"
+            value={velocity}
+            min={10}
+            max={50}
+            step={1}
+            unit="m/s"
+            ticks={['10 m/s', '25 m/s', '50 m/s']}
+            onChange={setVelocity}
+          />
 
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="proj-angle">Launch Angle (θ)</label>
-              <span className="control-readout">{angle}°</span>
-            </div>
-            <input
-              id="proj-angle"
-              type="range"
-              min="15"
-              max="75"
-              step="1"
-              value={angle}
-              onChange={(e) => setAngle(parseInt(e.target.value, 10))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>15°</span>
-              <span>45° (Max Range)</span>
-              <span>75°</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="proj-angle"
+            label="Launch Angle (θ)"
+            value={angle}
+            min={15}
+            max={75}
+            step={1}
+            unit="°"
+            ticks={['15°', '45° (Max Range)', '75°']}
+            onChange={setAngle}
+          />
 
           <div className="control-group">
             <label className="control-sublabel">Classical NCERT Launch Presets</label>

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ParameterSlider from '../common/ParameterSlider'
 
 export default function PendulumSimulation() {
   const [pendulumLength, setPendulumLength] = useState(1.8) // meters (0.5 to 3.0)
@@ -44,49 +45,30 @@ export default function PendulumSimulation() {
         </p>
 
         <div className="sim-controls-panel">
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="pendulum-len">Pendulum Length (L)</label>
-              <span className="control-readout">{pendulumLength.toFixed(1)} m</span>
-            </div>
-            <input
-              id="pendulum-len"
-              type="range"
-              min="0.5"
-              max="3.0"
-              step="0.1"
-              value={pendulumLength}
-              onChange={(e) => setPendulumLength(parseFloat(e.target.value))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>0.5 m</span>
-              <span>1.8 m</span>
-              <span>3.0 m</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="pendulum-len"
+            label="Pendulum Length (L)"
+            value={pendulumLength}
+            min={0.5}
+            max={3.0}
+            step={0.1}
+            unit="m"
+            displayValue={pendulumLength.toFixed(1)}
+            ticks={['0.5 m', '1.8 m', '3.0 m']}
+            onChange={setPendulumLength}
+          />
 
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="pendulum-angle">Initial Deflection Angle (θ)</label>
-              <span className="control-readout">{pendulumAngle}°</span>
-            </div>
-            <input
-              id="pendulum-angle"
-              type="range"
-              min="5"
-              max="45"
-              step="1"
-              value={pendulumAngle}
-              onChange={(e) => setPendulumAngle(parseInt(e.target.value, 10))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>5° (Harmonic)</span>
-              <span>25°</span>
-              <span>45° (Non-linear)</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="pendulum-angle"
+            label="Initial Deflection Angle (θ)"
+            value={pendulumAngle}
+            min={5}
+            max={45}
+            step={1}
+            unit="°"
+            ticks={['5° (Harmonic)', '25°', '45° (Non-linear)']}
+            onChange={setPendulumAngle}
+          />
 
           <div className="control-group">
             <label className="control-sublabel">Gravitational Environment (g)</label>

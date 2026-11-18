@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ParameterSlider from '../common/ParameterSlider'
 
 export default function EnzymeSimulation() {
   const [substrateConc, setSubstrateConc] = useState(4.5) // mM (0 to 20 mM)
@@ -57,27 +58,18 @@ export default function EnzymeSimulation() {
         </p>
 
         <div className="sim-controls-panel">
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="substrate-slider">Substrate Concentration ([S])</label>
-              <span className="control-readout">{substrateConc.toFixed(1)} mM</span>
-            </div>
-            <input
-              id="substrate-slider"
-              type="range"
-              min="0"
-              max="20"
-              step="0.2"
-              value={substrateConc}
-              onChange={(e) => setSubstrateConc(parseFloat(e.target.value))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>0 mM (Zero Rate)</span>
-              <span>3.0 mM (Km)</span>
-              <span>20 mM (Near V_max)</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="substrate-slider"
+            label="Substrate Concentration ([S])"
+            value={substrateConc}
+            min={0}
+            max={20}
+            step={0.2}
+            unit="mM"
+            displayValue={substrateConc.toFixed(1)}
+            ticks={['0 mM (Zero Rate)', '3.0 mM (Km)', '20 mM (Near V_max)']}
+            onChange={setSubstrateConc}
+          />
 
           <div className="control-group">
             <label className="control-sublabel">Concentration Presets</label>

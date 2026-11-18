@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ParameterSlider from '../common/ParameterSlider'
 
 const SUBSTANCES = [
   {
@@ -98,27 +99,18 @@ export default function MoleConceptSimulation() {
             </div>
           </div>
 
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="mole-slider">Amount of Substance (n)</label>
-              <span className="control-readout">{moles.toFixed(2)} mol</span>
-            </div>
-            <input
-              id="mole-slider"
-              type="range"
-              min="0.1"
-              max="5.0"
-              step="0.1"
-              value={moles}
-              onChange={(e) => setMoles(parseFloat(e.target.value))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>0.1 mol</span>
-              <span>1.0 mol (Standard)</span>
-              <span>5.0 mol</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="mole-slider"
+            label="Amount of Substance (n)"
+            value={moles}
+            min={0.1}
+            max={5.0}
+            step={0.1}
+            unit="mol"
+            displayValue={moles.toFixed(2)}
+            ticks={['0.1 mol', '1.0 mol (Standard)', '5.0 mol']}
+            onChange={setMoles}
+          />
 
           <div className="control-group">
             <label className="control-sublabel">Quick Stoichiometric Presets</label>

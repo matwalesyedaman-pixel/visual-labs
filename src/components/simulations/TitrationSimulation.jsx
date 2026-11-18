@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import ParameterSlider from '../common/ParameterSlider'
 
 export default function TitrationSimulation() {
   const [titrantVolume, setTitrantVolume] = useState(25.0) // mL of 0.1M NaOH added to 25.0mL 0.1M HCl
@@ -52,27 +53,18 @@ export default function TitrationSimulation() {
         </p>
 
         <div className="sim-controls-panel">
-          <div className="control-group">
-            <div className="control-header">
-              <label htmlFor="titrant-vol">Titrant Volume Added (0.10 M NaOH)</label>
-              <span className="control-readout">{titrantVolume.toFixed(1)} mL</span>
-            </div>
-            <input
-              id="titrant-vol"
-              type="range"
-              min="0"
-              max="50"
-              step="0.1"
-              value={titrantVolume}
-              onChange={(e) => setTitrantVolume(parseFloat(e.target.value))}
-              className="editorial-slider"
-            />
-            <div className="slider-ticks">
-              <span>0.0 mL (Pure Acid)</span>
-              <span>25.0 mL (Equivalence)</span>
-              <span>50.0 mL (Excess Base)</span>
-            </div>
-          </div>
+          <ParameterSlider
+            id="titrant-vol"
+            label="Titrant Volume Added (0.10 M NaOH)"
+            value={titrantVolume}
+            min={0}
+            max={50}
+            step={0.1}
+            unit="mL"
+            displayValue={titrantVolume.toFixed(1)}
+            ticks={['0.0 mL (Pure Acid)', '25.0 mL (Equivalence)', '50.0 mL (Excess Base)']}
+            onChange={setTitrantVolume}
+          />
 
           <div className="control-group">
             <label className="control-sublabel">Direct Volume Presets</label>
