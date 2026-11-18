@@ -20,13 +20,14 @@ export default function SubjectSection({ onSelectSubject }) {
           {CURRICULUM_SUBJECTS.map((subject) => (
             <SubjectCard
               key={subject.code}
+              id={subject.activeTab}
               code={subject.code}
               name={subject.name}
               description={subject.description}
               topics={subject.topics}
               moduleStatus={subject.moduleStatus}
               accent={subject.accent}
-              onExplore={() => onSelectSubject(subject.activeTab)}
+              onExplore={onSelectSubject}
             />
           ))}
         </div>

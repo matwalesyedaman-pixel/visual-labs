@@ -243,15 +243,29 @@ export default function PlantKingdomSimulation() {
                               : 'cell-muted'
                           }
                         >
-                          {item.vascularTissue.split(' ')[0]}
+                          {item.vascularTissue.includes('Absent')
+                            ? 'Absent'
+                            : item.vascularTissue.includes('Tracheids')
+                            ? 'Present (Tracheids)'
+                            : item.vascularTissue.includes('lacks')
+                            ? 'Present (No Vessels)'
+                            : 'Advanced (True Vessels)'}
                         </td>
-                        <td className="cell-dominant">{item.dominantPhase.split(' ')[0]}</td>
+                        <td className="cell-dominant">
+                          {item.dominantPhase.includes('Gametophyte')
+                            ? 'Gametophyte (n)'
+                            : 'Sporophyte (2n)'}
+                        </td>
                         <td
                           className={
                             item.seeds.startsWith('Present') ? 'cell-highlight' : 'cell-muted'
                           }
                         >
-                          {item.seeds.startsWith('Present') ? 'Seeds Present' : 'Seedless'}
+                          {item.seeds.includes('Naked')
+                            ? 'Naked Seeds'
+                            : item.seeds.includes('Enclosed')
+                            ? 'Enclosed in Fruit'
+                            : 'Seedless (Cryptogam)'}
                         </td>
                         <td
                           className={
@@ -260,7 +274,9 @@ export default function PlantKingdomSimulation() {
                               : 'cell-present'
                           }
                         >
-                          {item.waterForFertilization.split(' ')[0]}
+                          {item.waterForFertilization.includes('Essential')
+                            ? 'Essential (Swimming)'
+                            : 'Not Required (Pollen Tube)'}
                         </td>
                       </tr>
                     )

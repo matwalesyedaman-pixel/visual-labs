@@ -1,5 +1,6 @@
 // Reused and elevated SubjectCard component
 export default function SubjectCard({
+  id,
   code,
   name,
   description,
@@ -36,7 +37,7 @@ export default function SubjectCard({
         <button
           type="button"
           className="subject-explore-link"
-          onClick={() => onExplore?.(name)}
+          onClick={() => onExplore?.(id)}
           aria-label={`Open ${name} laboratory simulation`}
         >
           <span>Open {name} Workbench</span>

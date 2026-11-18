@@ -1,54 +1,70 @@
-import { useState } from 'react'
-import Navbar from './components/Navbar'
-import Hero from './components/Hero'
-import SubjectSection from './components/SubjectSection'
-import SimulationShowcase from './components/SimulationShowcase'
-import PhilosophySection from './components/PhilosophySection'
-import Footer from './components/Footer'
+import { RouterProvider, useRouter } from './router/RouterContext'
+import { parseRoute } from './router/routeMatcher'
+import Navbar from './components/layout/Navbar'
+import Footer from './components/layout/Footer'
+
+// Page Components
+import HomePage from './pages/HomePage'
+import ClassSelectionPage from './pages/ClassSelectionPage'
+import SubjectSelectionPage from './pages/SubjectSelectionPage'
+import ExperimentLibraryPage from './pages/ExperimentLibraryPage'
+import ExperimentDashboardPage from './pages/ExperimentDashboardPage'
+import NotFoundPage from './pages/NotFoundPage'
+
 import './App.css'
 
-export default function App() {
-  const [activeSimulationTab, setActiveSimulationTab] = useState('physics')
+function AppContent() {
+  const { path } = useRouter()
+  const route = parseRoute(path)
 
-  const scrollToSection = (id) => {
-    const element = document.getElementById(id)
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' })
+  const renderCurrentPage = () => {
+    switch (route.name) {
+      case 'home':
+        return <HomePage />
+      case 'classes':
+        return <ClassSelectionPage />
+      case 'subjects':
+        return <SubjectSelectionPage classId={route.params.classId} />
+      case 'experiment-library':
+        return (
+          <ExperimentLibraryPage
+            classId={route.params.classId}
+            subjectId={route.params.subjectId}
+          />
+        )
+      case 'experiment-dashboard':
+        return (
+          <ExperimentDashboardPage
+            classId={route.params.classId}
+            subjectId={route.params.subjectId}
+            experimentId={route.params.experimentId}
+          />
+        )
+      default:
+        return <NotFoundPage path={path} />
     }
   }
 
-  const handleSelectSubject = (tabKey) => {
-    setActiveSimulationTab(tabKey)
-    scrollToSection('simulations')
-  }
-
   return (
-    <div className="landing-page">
-      {/* 1. Navigation Bar */}
-      <Navbar onNavigate={scrollToSection} />
+    <div className="visual-labs-app">
+      {/* 1. Global Navigation Bar */}
+      <Navbar />
 
-      <main>
-        {/* 2. Hero Section */}
-        <Hero
-          onStartExploring={() => scrollToSection('subjects')}
-          onExploreSimulations={() => scrollToSection('simulations')}
-        />
+      {/* 2. Dynamic Page Content based on URL */}
+      <div className="app-main-viewport">
+        {renderCurrentPage()}
+      </div>
 
-        {/* 3. Subjects Section */}
-        <SubjectSection onSelectSubject={handleSelectSubject} />
-
-        {/* 4. Simulation Showcase (Physics, Chemistry, Biology Solvers) */}
-        <SimulationShowcase
-          activeTab={activeSimulationTab}
-          onTabChange={setActiveSimulationTab}
-        />
-
-        {/* 5. Pedagogical Architecture & Guidelines */}
-        <PhilosophySection />
-      </main>
-
-      {/* 6. Footer */}
-      <Footer onNavigate={scrollToSection} />
+      {/* 3. Global Academic Colophon */}
+      <Footer />
     </div>
+  )
+}
+
+export default function App() {
+  return (
+    <RouterProvider>
+      <AppContent />
+    </RouterProvider>
   )
 }
